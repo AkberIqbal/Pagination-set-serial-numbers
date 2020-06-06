@@ -1,0 +1,27 @@
+<mat-table #table2 [dataSource]="dataSource2" matSort>
+ <!--
+ <ng-container matColumnDef="sn">
+ <mat-header-cell *matHeaderCellDef mat-sort-header> SN. </mat-header-cell>
+ <mat-cell *matCellDef="let item; let i = index;">{{i+1}}</mat-cell>
+  </ng-container>
+  -->
+ <ng-container matColumnDef="description">
+ <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+    <mat-cell *matCellDef="let item; let j = index"> 
+      {{ (j+1) + (myPaginator.pageIndex * myPaginator.pageSize) }} - 
+      {{item.description}} </mat-cell>
+  </ng-container>
+ <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+
+<mat-paginator #myPaginator [length]="25"
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+
+
+<!-- Copyright 2019 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
